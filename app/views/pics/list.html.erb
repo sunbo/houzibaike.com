@@ -1,0 +1,42 @@
+<h1>
+	猴子图
+	<%= link_to '创建猴子图', new_pic_path, target: "_blank", class: "btn btn-primary float-right", role: "button" %>
+</h1>
+
+<table class="table table-hover">
+	<thead>
+		<tr class="table-secondary">
+			<th>ID</th>
+			<th>图片</th>
+			<th>标题</th>
+			<th>创建时间</th>
+			<th>权重</th>
+			<th>发布？</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @pics.each do |t| %>
+			<tr>
+				<th scope="row"><%= t.id %></th>
+				<td>
+					<%= link_to t, target: "_blank" do %>
+						<%= image_tag t.media.url(:small), size: "60x60" %>
+					<% end %>
+				</td>
+				<td><%= link_to t.desc, t, target: "_blank" %></td>
+				<td>
+					<%= link_to t.user.name, user_path(t.user), target: "_blank" %><br />
+					<span class='small' ><%= t.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+				</td>
+				<td><%= t.position %></td>
+				<td><%= render partial:'common/publish', locals:{record: t} %></td>
+				<td>
+					<%= link_to '查看', t, target: "_blank" %>
+					<%= link_to '编辑', edit_pic_path(t), target: "_blank" %>
+					<%= link_to '删除', t, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

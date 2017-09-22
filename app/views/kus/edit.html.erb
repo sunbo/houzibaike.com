@@ -1,0 +1,38 @@
+<%= form_for @ku ,method: :put, html: {class: 'form-horizontal', multipart: true} do |f|%>
+	<div class="form-group">
+		<%= f.label :category_id, class: 'col-md-2 control-label' %>
+		<div class="col-md-8">
+			<%= f.collection_select :category_id, KuCategory.arrange_as_array({order: 'title'}, @ku_category.possible_parents) , :id, :name_for_selects, include_blank: true, class: "form-control" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :title, class: 'col-md-2 control-label' %>
+		<div class="col-md-8">
+			<%= f.text_field :title, class: "form-control"%>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :desc, class: 'col-md-2 control-label' %>
+		<div class="col-md-8">
+			<%= f.text_area :desc, rows: 4, class: "form-control"%>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :content, class: 'col-md-2 control-label' %>
+		<div class="col-md-8">
+			<%= f.text_area :content, rows: 4, class: "form-control"%>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :position, class: 'col-md-2 control-label' %>
+		<div class="col-md-8">
+			<%= f.number_field :position, class: "form-control"%>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<%= f.submit class: "btn btn-primary" %>
+		</div>
+	</div>
+<% end %>

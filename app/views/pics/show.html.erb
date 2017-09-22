@@ -1,0 +1,21 @@
+<p>
+  <strong>desc:</strong>
+  <%= @pic.desc %>
+</p>
+
+<p>
+  <strong>user_id:</strong>
+  <%= @pic.user_id %>
+</p>
+
+<%= image_tag @pic.media.url(:small) %>
+
+<br/>
+<%=link_to like_pic_path(@pic), method: :put, class: 'btn btn-default btn-sm' do %>
+	<span class="glyphicon glyphicon-chevron-up"></span>
+	like <%=@pic.get_upvotes.size%></td>
+<% end %>
+<%=link_to dislike_pic_path(@pic), method: :put, class: 'btn btn-default btn-sm' do %>
+	<span class="glyphicon glyphicon-chevron-down"></span>
+	dislike <%=@pic.get_downvotes.size%></td>
+<%end%>

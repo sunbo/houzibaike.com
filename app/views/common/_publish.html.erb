@@ -1,0 +1,8 @@
+<%
+	str = record.published? ? "unpublish" : "publish"
+	url = send("#{str}_#{controller_name.singularize}_path".to_sym,record.id)
+	css_str =  record.published? ? "status_button active" : "status_button"
+	id_str = "publish_btn_#{controller_name.singularize}_#{record.id}"
+%>
+
+<%= link_to '', url , :class => css_str , remote: true, format: :js, method: :put, id:id_str%>

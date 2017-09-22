@@ -1,0 +1,20 @@
+<%# add navigation links to this file %>
+<!-- <li class='nav-item'><%= link_to 'About', page_path('about'), class: 'nav-link' %></li> -->
+<ul class="navbar-nav mr-auto">
+	<li class="nav-item <%= 'active' if controller_name == 'kus' || controller_name == 'ku_categories' %>">
+		<%= link_to "猴子库", kus_path, class: "nav-link" %>
+	</li>
+	<li class="nav-item <%= 'active' if controller_name == 'pics' %>">
+		<%= link_to "猴子图", pics_path, class: "nav-link" %>
+	</li>
+	<li class="nav-item <%= 'active' if controller_name == 'taos' || controller_name == 'tao_categories' %>">
+		<%= link_to "猴子淘", taos_path, class: "nav-link" %>
+	</li>
+	<li class="nav-item <%= 'active' if controller_name == 'exposes' %>">
+		<%= link_to "爆料", new_expose_path, class: "nav-link" %>
+	</li>
+</ul>
+<!-- <form class="form-inline my-2 my-lg-0 mr-auto">
+	<input class="form-control form-control-sm mr-sm-2" type="text" placeholder="这里有关于猴子的一切">
+	<button class="btn btn-sm btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+</form> -->

@@ -1,0 +1,12 @@
+<p>
+  <strong>title:</strong>
+  <%= @ku_category.title %>
+</p>
+<p>
+  <strong>Parent:</strong>
+  <%= @ku_category.parent ? @ku_category.parent.title : '---' %>
+</p>
+
+
+<%= link_to 'Edit', edit_ku_category_path(@ku_category) %> |
+<%= link_to 'Back', ku_categories_path %>

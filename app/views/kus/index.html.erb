@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row">
+		<% @kus.each do |t| %>
+			<div class="col-sm-6 col-md-4 col-lg-4 mt-4">
+				<div class="card">
+					<%= image_tag '', class: "card-img-top"%>
+					<div class="card-block">
+						<h4 class="card-title"><%= t.title %></h4>
+						<!-- <div class="meta"><a href="#">玩物</a></div> -->
+						<div class="card-text">
+							<%= t.desc %>
+						</div>
+					</div>
+					<div class="card-footer">
+						<span class="float-right">bb</span>
+						<span style="color:#F00">aa</span>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

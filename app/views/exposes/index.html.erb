@@ -1,0 +1,36 @@
+<h1>
+	爆料
+	<%= link_to '创建爆料', new_expose_path, target: "_blank", class: "btn btn-primary float-right", role: "button" %>
+</h1>
+
+<table class="table table-hover">
+	<thead>
+		<tr class="table-secondary">
+			<th>ID</th>
+			<th>爆料网址</th>
+			<th>爆料理由</th>
+			<th>创建时间</th>
+			<th>处理？</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @exposes.each do |t| %>
+			<tr>
+				<th scope="row"><%= t.id %></th>
+				<td class="AutoNewline"><%= t.url %></td>
+				<td class="AutoNewline"><%= t.desc %></td>
+				<td>
+					<%= link_to t.user.name, user_path(t.user), target: "_blank" %><br />
+					<span class='small' ><%= t.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+				</td>
+				<td><%= render partial:'common/publish', locals:{record: t} %></td>
+				<td>
+					<%= link_to '查看', t, target: "_blank" %>
+					<%= link_to '编辑', edit_expose_path(t), target: "_blank" %>
+					<%= link_to '删除', t, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -1,0 +1,2 @@
+<%= id_str = "publish_btn_#{controller_name.singularize}_#{@record.id}"%>
+$("#<%= id_str %>").replaceWith("<%= escape_javascript render partial: 'common/publish',locals:{record: @record}%>")

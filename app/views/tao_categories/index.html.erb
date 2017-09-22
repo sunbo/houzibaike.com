@@ -1,0 +1,38 @@
+<h1>
+	猴子淘分类
+	<%= link_to '创建猴子淘分类', new_tao_category_path, target: "_blank", class: "btn btn-primary float-right", role: "button" %>
+</h1>
+
+<table class="table table-hover">
+	<thead>
+		<tr class="table-secondary">
+			<th>ID</th>
+			<th>分类名</th>
+			<th>描述</th>
+			<th>创建时间</th>
+			<th>权重</th>
+			<th>发布？</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @tao_categories.each do |t| %>
+			<tr>
+				<th scope="row"><%= t.id %></th>
+				<td><%= link_to t.name_for_tree, t, target: "_blank" %></td>
+				<td><%= t.desc %></td>
+				<td>
+					<%= link_to t.user.name, user_path(t.user), target: "_blank" %><br />
+					<span class='small' ><%= t.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+				</td>
+				<td><%= t.position %></td>
+				<td><%= render partial:'common/publish', locals:{record: t} %></td>
+				<td>
+					<%= link_to '查看', t, target: "_blank" %>
+					<%= link_to '编辑', edit_tao_category_path(t), target: "_blank" %>
+					<%= link_to '删除', t, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

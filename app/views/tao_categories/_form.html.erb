@@ -1,0 +1,21 @@
+<%= form_for(@tao_category) do |f| %>
+	<div class="field">
+		<%= f.label :title %><br />
+		<%= f.text_field :title %>
+	</div>
+	<div class="field">
+		<%= f.label :desc %><br />
+		<%= f.text_field :desc %>
+	</div>
+	<div class="field">
+		<%= f.label :position %><br />
+		<%= f.number_field :position %>
+	</div>
+	<div class="field">
+		<%= f.label :parent_id %><br />
+		<%= f.collection_select :parent_id, TaoCategory.arrange_as_array({order: 'title'}, @tao_category.possible_parents) , :id, :name_for_selects, include_blank: true %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

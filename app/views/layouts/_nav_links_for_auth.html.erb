@@ -1,0 +1,37 @@
+<ul class="navbar-nav">
+	<% if user_signed_in? %>
+		<% if current_user.try(:admin?) %>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownManageLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				管理
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownManageLink">
+					<%= link_to '用户', users_path, class: 'dropdown-item' %>
+					<%= link_to '爆料', exposes_path, class: 'dropdown-item' %>
+					<%= link_to "猴子库分类", ku_categories_path, class: "dropdown-item" %>
+					<%= link_to "猴子库", list_kus_path, class: "dropdown-item" %>
+					<%= link_to "猴子图", list_pics_path, class: "dropdown-item" %>
+					<%= link_to "猴子淘分类", tao_categories_path, class: "dropdown-item" %>
+					<%= link_to "猴子淘", list_taos_path, class: "dropdown-item" %>
+				</div>
+			</li>
+		<% end %>
+	<% end %>
+
+	<% if user_signed_in? %>
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUserLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<%= current_user.name %>
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdownUserLink">
+				<%= link_to '编辑', edit_user_registration_path, class: 'dropdown-item' %>
+				<%= link_to '我的爆料', edit_user_registration_path, class: 'dropdown-item' %>
+				<%= link_to '我的猴子图', edit_user_registration_path, class: 'dropdown-item' %>
+				<%= link_to '登出', destroy_user_session_path, :method=>'delete', class: 'dropdown-item' %>
+			</div>
+		</li>
+	<% else %>
+		<li class='nav-item'><%= link_to '登录', new_user_session_path, class: 'nav-link' %></li>
+		<li class='nav-item'><%= link_to '注册', new_user_registration_path, class: 'nav-link' %></li>
+	<% end %>
+</ul>

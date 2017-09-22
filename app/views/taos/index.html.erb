@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="row">
+		<% @taos.each do |t| %>
+			<div class="col-sm-6 col-md-4 col-lg-4 mt-4">
+				<div class="card">
+					<%= link_to tao_path(t), target: "_blank" do %>
+						<%= image_tag t.pic.url(:large), class: "card-img-top" %>
+					<% end %>
+					<div class="card-block">
+						<h4 class="card-title"><%= link_to t.title, tao_path(t), target: "_blank" %></h4>
+						<!-- <div class="meta"><a href="#">玩物</a></div> -->
+						<div class="card-text">
+							<%= t.desc %>
+						</div>
+					</div>
+					<div class="card-footer">
+						<span class="float-right"><%= link_to '去购买>', t.fanli_url, target: "_blank" %></span>
+						<span style="color:#F00"><%= t.price %>元<%= t.baoyou == true ? "（包邮）" : "" %></span>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
